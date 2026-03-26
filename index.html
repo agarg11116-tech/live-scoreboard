@@ -1,53 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cricket Scoreboard</title>
+  <title>IPL Live Scoreboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="app">
-    <h1>🏏 Live Scoreboard</h1>
+<div class="app">
 
-    <div class="teams">
-      <div class="team-box">
-        <h2>India</h2>
-        <p id="scoreA">0/0</p>
-        <p id="oversA">(0.0)</p>
-      </div>
+  <h1>🏏 IPL LIVE SCORE</h1>
 
-      <div class="vs">VS</div>
+  <!-- Team Selection -->
+  <div class="select">
+    <select id="teamAName" onchange="changeTeam('A')">
+      <option value="CSK">CSK</option>
+      <option value="MI">MI</option>
+      <option value="RCB">RCB</option>
+      <option value="KKR">KKR</option>
+    </select>
 
-      <div class="team-box">
-        <h2>Australia</h2>
-        <p id="scoreB">0/0</p>
-        <p id="oversB">(0.0)</p>
-      </div>
-    </div>
+    <span class="vs">VS</span>
 
-    <div class="controls">
-      <h3>Control Team A</h3>
-      <button onclick="addRun('A',1)">+1</button>
-      <button onclick="addRun('A',4)">+4</button>
-      <button onclick="addRun('A',6)">+6</button>
-      <button onclick="wicket('A')">Wicket</button>
-      <button onclick="ball('A')">Ball</button>
-    </div>
-
-    <div class="controls">
-      <h3>Control Team B</h3>
-      <button onclick="addRun('B',1)">+1</button>
-      <button onclick="addRun('B',4)">+4</button>
-      <button onclick="addRun('B',6)">+6</button>
-      <button onclick="wicket('B')">Wicket</button>
-      <button onclick="ball('B')">Ball</button>
-    </div>
-
-    <button class="reset" onclick="reset()">Reset Match</button>
+    <select id="teamBName" onchange="changeTeam('B')">
+      <option value="MI">MI</option>
+      <option value="CSK">CSK</option>
+      <option value="RCB">RCB</option>
+      <option value="KKR">KKR</option>
+    </select>
   </div>
 
-  <script src="index.js"></script>
+  <!-- Score Card -->
+  <div class="score-card">
+
+    <div class="team">
+      <img id="logoA" src="https://i.imgur.com/7QKQZ8H.png">
+      <h2 id="nameA">CSK</h2>
+      <p id="scoreA">0/0</p>
+      <span id="oversA">(0.0)</span>
+    </div>
+
+    <div class="vs">VS</div>
+
+    <div class="team">
+      <img id="logoB" src="https://i.imgur.com/6XKQZ8H.png">
+      <h2 id="nameB">MI</h2>
+      <p id="scoreB">0/0</p>
+      <span id="oversB">(0.0)</span>
+    </div>
+
+  </div>
+
+  <!-- Result -->
+  <h2 id="result"></h2>
+
+  <!-- Controls -->
+  <div class="controls">
+    <h4>Team A</h4>
+    <button onclick="addRun('A',1)">+1</button>
+    <button onclick="addRun('A',4)">+4</button>
+    <button onclick="addRun('A',6)">+6</button>
+    <button onclick="wicket('A')">Wicket</button>
+    <button onclick="ball('A')">Ball</button>
+  </div>
+
+  <div class="controls">
+    <h4>Team B</h4>
+    <button onclick="addRun('B',1)">+1</button>
+    <button onclick="addRun('B',4)">+4</button>
+    <button onclick="addRun('B',6)">+6</button>
+    <button onclick="wicket('B')">Wicket</button>
+    <button onclick="ball('B')">Ball</button>
+  </div>
+
+  <button class="reset" onclick="reset()">Reset Match</button>
+
+</div>
+
+<!-- Sounds -->
 <audio id="runSound" src="https://www.soundjay.com/button/beep-07.wav"></audio>
 <audio id="wicketSound" src="https://www.soundjay.com/button/beep-10.wav"></audio>
+
+<script src="index.js"></script>
 </body>
 </html>
